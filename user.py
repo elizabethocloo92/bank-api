@@ -10,24 +10,21 @@ class BankUser:
         self.__create_user(bank)
     
     def __create_user(self, bank):
-        """
-        TODO: complete this function that adds the current user to the bank database
-        """
-        ...
+        bank['users'][self.user_name] = {
+            'password' : self.__password,
+            'balance' : 0
+        }
     
     def check_balance(self):
-        """
-        TODO: complete this function that returns the balance of the current user
-        """
-        return ...
+        
+        return self.bank['users'][self.user_name]['balance']
     
     def deposit(self, amount):
-        """
-        TODO: complete this function that deposits money into the current users account
-        """
-        ...
-    
+        self.bank['users'][self.user_name]['balance'] += amount
+        
     def withdraw(self, amount):
-        """
-        TODO: complete this function that 
-        """
+        if self.bank['users'][self.iser_name]['balance'] >= amount:
+            self.bank['users'][self.user_name]['balance'] -= amount
+            return True
+        else:
+            return False
