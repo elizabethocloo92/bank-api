@@ -30,15 +30,13 @@ class Bank:
            print("User Not in System")
            return False
     def get__bank_data(self):
-        return self.__bank_data
-               
-        
+        return self.__bank_data 
     
     def __process_transaction(self, user_name, amount):
-        if user_name in self.__bank_data:
-            self.__bank_data[user_name]("balance") += amount
-            return True
-        else:
+      if user_name in self.__bank_data:
+        self.__bank_data[user_name]["balance"] += amount
+        return True
+      else:
             print("User not found.")
             return False
 
@@ -53,37 +51,38 @@ class Bank:
                 "password": password,
                 "balance": 0
             }
-    
+            print(f"User '(user_name)' created,")
+            return True
+        else:
+            print("User Already in System.")
+            return False
+            
     def get_balance(self, user_name, password):
-        """
-        TODO: Function that returns the balance of the current user
-
-        Make sure to use __user_login to ensure that user_name and password are a match
-
-        arguments:
-            user_name: the user name of the current user
-            password: the password associated with the current user
-        returns:
-            the current balance of the user
-        """
-        ...
+        if user_name in self.__bank_data:
+            return self.__bank_dta[user_name]["balance"]
+        else:
+            print("User not in system.")
+            return None
+        
     
     def deposit(self, user_name, password, amount):
-        """
-        TODO: Function that deposits money into the account of the current user
-
-        Make sure to confirm that amount is greater than 0
-        Make sure to use __user_login to ensure that user_name and password are a match
-        Make sure to only use __process_transaction to make changes to the users balance, not directly
-        """
-        ...
+       if amount <=0:
+           print("Deposit MUST be greater than 0.")
+           return False
+           return self.__process_transaction(user_name, amount)
 
     def withdraw(self, user_name, password, amount):
-        """
-        TODO: Function that withdraws money from the account of the current user
-
-        Make sure to confirm that amount is greater than 0 and less than or equal to the users current available balance
-        Make sure to use __user_login to ensure that user_name and password are a match
-        Make sure to only use __process_transaction to make changes to the users balance, not directly
-        """
-        ...
+       if amount <=0:
+           print("Withdrawl MUST be greater than 0.")
+           return False
+           if user_name in self.__bank_data:
+            current_balance = self.__bank_data[user_name]["balance"]
+            if current_balance >= amount:
+                self.__bank_data[user_name]["balance"] -= amount
+                return True
+            else:
+                print("Insufficient Funds.")
+       else:
+           print("User Not in System.")
+           return False
+        
