@@ -19,6 +19,21 @@ class Bank:
         self.__bank_data = {}
 
     def __user_login(self, user_name, password):
+       if user_name in self.__bank_data:
+           if self.__bank_data[user_name]["Password"] == password:
+               print("Login Verified")
+               return True
+           else:
+               print("Inccorect Password")
+               return False
+       else:
+           print("User Not in System")
+           return False
+    def get__bank_data(self):
+        return self.__bank_data
+               
+        
+        
         """
         TODO: complete this function that logs in using the user
 
@@ -31,7 +46,6 @@ class Bank:
         returns:
             True if user is successfully logged in, False otherwise
         """
-        return ...
     
     def __process_transaction(self, user_name, amount):
         """
