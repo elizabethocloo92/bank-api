@@ -33,51 +33,19 @@ class Bank:
         return self.__bank_data
                
         
-        
-        """
-        TODO: complete this function that logs in using the user
-
-        Make sure to check if the user exists within the bank database
-        Make sure to check if password given matches password in system
-
-        arguments:
-            user_name: the user name of the current user
-            password: the password given by the current user
-        returns:
-            True if user is successfully logged in, False otherwise
-        """
     
     def __process_transaction(self, user_name, amount):
-        """
-        TODO: complete this function that updates current user balance by the given amount
-
-        arguments:
-            user_name: the user name of the current user
-            amount: the amount to change the current users balance by
-        """
-        ...
+        if user_name in self.__bank_data:
+            self.__bank_data[user_name]("balance") += amount
+            return True
+        else:
+            print("User not found.")
+            return False
 
     def find_user(self, user_name):
-        """
-        Function that checks if the user exists within the database
-
-        arguments:
-            user_name: the user name of the current user
-        returns:
-            True if the user exists and False otherwise
-        """
-        if user_name in self.__bank_data:
-            return True
-        return False
-
+       return user_name in self.__bank_data
+    
     def create_user(self, user_name, password):
-        """
-        Function that adds a user to the bank database
-
-        arguments:
-            user_name: the user name of the current user
-            password: the password associated with the current user
-        """
         #check to see if user is not already in the database
         if user_name not in self.__bank_data:
             #add the user to the system
