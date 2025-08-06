@@ -10,14 +10,12 @@ class BankUser:
         self.__create_user(bank)
     
     def __create_user(self, bank):
-        bank['users'][self.user_name] = {
-            'password' : self.__password,
-            'balance' : 0
-        }
+        bank.create_user(self.user_name, self.__password)
+          
     
     def check_balance(self):
         
-        return self.bank['users'][self.user_name]['balance']
+        return self.bank.get_balance(self.user_name , self.__password)
     
     def deposit(self, amount):
         self.bank.deposit(self.user_name, self.password, amount)
