@@ -20,7 +20,7 @@ class BankUser:
         return self.bank['users'][self.user_name]['balance']
     
     def deposit(self, amount):
-        self.bank['users'][self.user_name]['balance'] += amount
+        self.bank.deposit(self.user_name, self.password, amount)
         
     def withdraw(self, amount):
         if self.bank['users'][self.iser_name]['balance'] >= amount:
