@@ -21,8 +21,4 @@ class BankUser:
         self.bank.deposit(self.user_name, self.password, amount)
         
     def withdraw(self, amount):
-        if self.bank['users'][self.iser_name]['balance'] >= amount:
-            self.bank['users'][self.user_name]['balance'] -= amount
-            return True
-        else:
-            return False
+     return self.bank.withdraw(self.user_name, self.password, amount)
